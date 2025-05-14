@@ -131,11 +131,13 @@
     <ClCompile Include="DirGraph.cpp" />
     <ClCompile Include="FirstAlgorithm.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Vertex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BFS.h" />
     <ClInclude Include="DirGraph.h" />
     <ClInclude Include="FirstAlgorithm.h" />
+    <ClInclude Include="Vertex.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,20 +2,18 @@
 
 void DirGraph::MakeEmptyGraph(int numOfVertices)
 {
-	while (numOfVertices < 1)
-	{
-		cout << "Invalid Input! Please enter a positive whole number.";
-		cin >> numOfVertices;
-	}
-
-	m_numVertices = numOfVertices;
-	m_AdjList.clear();
-
+	vertices.reserve(m_numVertices);
 	addVerticesToGraph();
 }
 
 void DirGraph::FillGraphEdges()
 {
+	addEdgeFillLargeJug();
+	addEdgeFillSmallJug();
+	addEdgeEmptyLargeJug();
+	addEdgeEmptySmallJug();
+	addEdgePourLargeJugToSmallJug();
+	addEdgePourSmallJugToLargeJug();
 }
 
 void DirGraph::addVerticesToGraph()
@@ -31,60 +29,98 @@ void DirGraph::addVerticesToGraph()
 
 void DirGraph::addVertexToGraph(pair<int, int> vertex)
 {
-	if (m_AdjList.find(vertex) == m_AdjList.end())
-	{
-		m_AdjList[vertex] = list<pair<int, int>>();
-	}
+	Vertex v(vertex.first, vertex.second);
+	vertices.push_back(v);
 }
 
-void DirGraph::addEdge(pair<int, int> u, pair<int, int> v)
+void DirGraph::addEdge(Vertex from, Vertex to)
 {
-	if (m_AdjList.find(u) != m_AdjList.end() && m_AdjList.find(v) != m_AdjList.end())
-	{
-		m_AdjList[u].push_back(v);
-		m_AdjList[v].push_back(u);
-	}
-	else
-	{
-		cout << "Failed to add edge! One or both vertices do not exist in the graph." << endl;
-	}
+	from.addNeighbor(to);
 }
 
 void DirGraph::addEdgeFillLargeJug()
 {
+	for (int largeCurrAmount = 0; largeCurrAmount < m_L; largeCurrAmount++)
+	{
+		for (int smallCurrAmount = 0; smallCurrAmount <= m_S; smallCurrAmount++)
+		{
+			int current = largeCurrAmount * (m_S + 1) + smallCurrAmount;
+			int destination = m_L * (m_S + 1) + smallCurrAmount;
+			addEdge(vertices[current], vertices[destination]);
+		}
+	}
 }
 
 void DirGraph::addEdgeFillSmallJug()
 {
+	for (int largeCurrAmount = 0; largeCurrAmount <= m_L; largeCurrAmount++)
+	{
+		for (int smallCurrAmount = 0; smallCurrAmount < m_S; smallCurrAmount++)
+		{
+			int current = largeCurrAmount * (m_S + 1) + smallCurrAmount;
+			int destination = largeCurrAmount * (m_S + 1) + m_S;
+			addEdge(vertices[current], vertices[destination]);
+		}
+	}
 }
 
 void DirGraph::addEdgeEmptyLargeJug()
 {
+	for (int largeCurrAmount = 1; largeCurrAmount <= m_L; largeCurrAmount++)
+	{
+		for (int smallCurrAmount = 0; smallCurrAmount <= m_S; smallCurrAmount++)
+		{
+			int current = largeCurrAmount * (m_S + 1) + smallCurrAmount;
+			int destination = smallCurrAmount;
+			addEdge(vertices[current], vertices[destination]);
+		}
+	}
 }
 
 void DirGraph::addEdgeEmptySmallJug()
 {
+	for (int largeCurrAmount = 0; largeCurrAmount <= m_L; largeCurrAmount++)
+	{
+		for (int smallCurrAmount = 1; smallCurrAmount <= m_S; smallCurrAmount++)
+		{
+			int current = largeCurrAmount * (m_S + 1) + smallCurrAmount;
+			int destination = largeCurrAmount * (m_S + 1);
+			addEdge(vertices[current], vertices[destination]);
+		}
+	}
 }
 
 void DirGraph::addEdgePourLargeJugToSmallJug()
 {
+	for (int largeCurrAmount = 0; largeCurrAmount <= m_L; largeCurrAmount++) // rows
+	{
+		for (int smallCurrAmount = 0; smallCurrAmount < m_S; smallCurrAmount++) //columns
+		{
+			int current = largeCurrAmount * (m_S + 1) + smallCurrAmount; // the row = i * (m_S + 1) //the col = j
+			int pourAmount = min(largeCurrAmount, m_S - smallCurrAmount); // pour amount
+			int destination = (largeCurrAmount - pourAmount) * (m_S + 1) + (smallCurrAmount + pourAmount); // (j + pourAmount)
+			addEdge(vertices[current], vertices[destination]);
+		}
+	}
 }
 
 void DirGraph::addEdgePourSmallJugToLargeJug()
 {
+	for (int largeCurrAmount = 0; largeCurrAmount < m_L; largeCurrAmount++) // rows
+	{
+		for (int smallCurrAmount = 0; smallCurrAmount <= m_S; smallCurrAmount++) //columns
+		{
+			int current = largeCurrAmount * (m_S + 1) + smallCurrAmount; // the row = i * (m_S + 1) //the col = j
+			int pourAmount = min(m_L - largeCurrAmount, smallCurrAmount); // pour amount
+			int destination = (largeCurrAmount + pourAmount) * (m_S + 1) + (smallCurrAmount - pourAmount); 
+			addEdge(vertices[current], vertices[destination]);
+		}
+	}
 }
 
 
 
-list<pair<int, int>> DirGraph::getAdjList(pair<int, int> vertex)
+list<Vertex> DirGraph::getAdjList(Vertex vertex)
 {
-	if (m_AdjList.find(vertex) != m_AdjList.end())
-	{
-		return m_AdjList[vertex];
-	}
-	else
-	{
-		cout << "Vertex not found!" << endl;
-		return list<pair<int, int>>();
-	}
+	return vertex.getNeighbors();
 }
