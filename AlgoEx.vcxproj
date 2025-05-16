@@ -136,6 +136,7 @@
   <ItemGroup>
     <ClInclude Include="BFS.h" />
     <ClInclude Include="DirGraph.h" />
+    <ClInclude Include="EdgeType.h" />
     <ClInclude Include="FirstAlgorithm.h" />
     <ClInclude Include="Vertex.h" />
   </ItemGroup>

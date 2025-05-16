@@ -24,10 +24,10 @@
     <ClCompile Include="FirstAlgorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BFS.cpp">
+    <ClCompile Include="Vertex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vertex.cpp">
+    <ClCompile Include="BFS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,10 +38,13 @@
     <ClInclude Include="FirstAlgorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BFS.h">
+    <ClInclude Include="Vertex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vertex.h">
+    <ClInclude Include="EdgeType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BFS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
