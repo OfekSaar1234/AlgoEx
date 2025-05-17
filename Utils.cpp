@@ -4,9 +4,9 @@ void Utils::printOperations(const vector<EdgeType>& operations, int numOfOperati
 {
     cout << "Number of operations: " << numOfOperations << endl;
     cout << "Operations:" << endl;
-    for (int i = 0; i < numOfOperations; i++)
+    for (int i = numOfOperations - 1; i >= 0; i--)
     {
-        cout << i + 1 << ". ";
+        cout << numOfOperations - i << ". ";
         printEdgeType(operations[i]);
     }
 }

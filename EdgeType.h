@@ -8,5 +8,6 @@ enum class EdgeType
     Orange,     // Empty large jug
     LightBlue,  // Empty small jug
     Blue,       // Transfer from small jug to large jug
-    Purple      // Transfer from large jug to small jug
+    Purple,      // Transfer from large jug to small jug
+    None
 };

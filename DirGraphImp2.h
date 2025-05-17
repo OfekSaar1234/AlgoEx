@@ -34,7 +34,7 @@ public:
 	int getS() const { return m_S; }
 	int getNumVertices() const { return m_numVertices; }
 
-	void addVertexToGraph(int vertex)
+	void markVisited(int vertex)
 	{
 		m_visited.insert(vertex);
 	}
@@ -44,10 +44,8 @@ public:
 		return m_visited.find(vertex) != m_visited.end();
 	}
 
-	const list<pair<pair<int, int>, EdgeType>>& CalculateAdjList(const pair<int, int>& vertex) const
+	void CalculateAdjList(vector<pair<pair<int, int>, EdgeType>>& adjList, const pair<int, int>& vertex) const
 	{
-		list<pair<pair<int, int>, EdgeType>> adjList;
-
 		if (vertex.first != m_L)
 			adjList.push_back(getNeighborFillLargeJug(vertex));
 
@@ -65,8 +63,6 @@ public:
 
 		if (vertex.second != 0 && vertex.first != m_L)
 			adjList.push_back(getNeighborPourSmallJugToLargeJug(vertex));
-
-		return adjList;
 	}
 
 

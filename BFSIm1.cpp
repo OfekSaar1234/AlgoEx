@@ -58,6 +58,7 @@ void BFSIm1::printPath(const pair<int, int>& goalVertex, DirGraphImp1& graph) co
     if(operations.size() != 0)
     {
 		reverse(operations.begin(), operations.end());
-        Utils::printOperations(operations, numOfOperations);
     }
+
+	Utils::printOperations(operations, numOfOperations);
 }
