@@ -1,34 +1,47 @@
-#include "DirGraph.h"
+#include "DirGraphImp1.h"
+#include "DirGraphImp2.h"
 #include "FirstAlgorithm.h"
-#include "BFS.h"
+#include "BFSIm1.h"
+#include "BFSImp2.h"
 #include <chrono>
 
 #include <iostream>
 
 int main() 
 {
+    
+    // before activating solutions, check validity of input
+    // int L, S, W, implementation, runTime;
 
-    auto start = chrono::high_resolution_clock::now();
+    // cin >> L >> S >> W >> implementation >> runTime;
 
-    DirGraph graph(6, 4);
-    BFS bfs(graph);
+    // auto start = chrono::high_resolution_clock::now();
 
-    bfs.runFirstImplementation(graph, { 0, 0 });
-    bfs.printPath({ 5, 0 }, graph);
+    // DirGraphImp1 graph(6, 4);
+    // BFSIm1 bfs(graph);
 
-    auto end = chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
-    std::cout << "Function took " << duration.count() << " microseconds." << std::endl;
-    return 0;
+    // bfs.runFirstImplementation(graph, { 0, 0 });
+    // bfs.printPath({ 5, 0 }, graph);
 
+    // auto end = chrono::high_resolution_clock::now();
+    // auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    // std::cout << "Function took " << duration.count() << " microseconds." << std::endl;
+    // return 0;
+
+    DirGraphImp2 graph(4, 3);
+    BFSImp2 bfs(&graph);
+
+    bfs.runSecondImplementation(0, Utils::getIndex({2, 0}, graph.getS()));
+    bfs.printPath(Utils::getIndex({ 2, 0 }, graph.getS()));
 }
 
 
 
-/// creat graph with all vertiecesa and edges
-/// sort adj of all v's
-/// creat members d[] and p[] 
-/// run BFS starting from [0,0]
-/// from destination [{w,0}] go to parents and run backwards untill {0,0}
-/// append to start of a new list each eadge type and print it in switch case according to type  
-/// 
+
+
+
+
+//to do
+//
+// fix BFSimp1
+// change bfs function to RUN

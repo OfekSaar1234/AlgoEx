@@ -127,18 +127,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BFS.cpp" />
-    <ClCompile Include="DirGraph.cpp" />
+    <ClCompile Include="BFSIm1.cpp" />
+    <ClCompile Include="BFSImp2.cpp" />
+    <ClCompile Include="DirGraphImp1.cpp" />
+    <ClCompile Include="DirGraphImp2.cpp" />
     <ClCompile Include="FirstAlgorithm.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Vertex.cpp" />
+    <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BFS.h" />
-    <ClInclude Include="DirGraph.h" />
+    <ClInclude Include="BFSIm1.h" />
+    <ClInclude Include="BFSImp2.h" />
+    <ClInclude Include="DirGraphImp1.h" />
+    <ClInclude Include="DirGraphImp2.h" />
     <ClInclude Include="EdgeType.h" />
     <ClInclude Include="FirstAlgorithm.h" />
-    <ClInclude Include="Vertex.h" />
+    <ClInclude Include="Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

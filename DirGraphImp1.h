@@ -1,17 +1,16 @@
 #pragma once
 
 #include <iostream>
-#include <unordered_map>
 #include <list>
 #include <set>
 #include <vector>
 #include <utility>
-#include "Vertex.h"
 #include "EdgeType.h"
+#include "Utils.h"
 
 using namespace std;
 
-class DirGraph
+class DirGraphImp1
 {
 private:
 	
@@ -39,7 +38,7 @@ private:
 
 public:
 	
-	DirGraph(int L, int S) : m_L(L), m_S(S) 
+	DirGraphImp1(int L, int S) : m_L(L), m_S(S) 
 	{
 		m_numVertices = (L + 1) * (S + 1);
 		MakeEmptyGraph(m_numVertices);
@@ -48,7 +47,7 @@ public:
 
 	EdgeType getEdge(pair<int, int> from, pair<int, int> to) const
 	{
-		for (const auto& neighbor : m_AdjList[getIndex(from)])
+		for (const auto& neighbor : m_AdjList[Utils::getIndex(from, getS())])
 		{
 			if (neighbor.first == to)
 			{
@@ -59,10 +58,7 @@ public:
 
 	int getL() const { return m_L; }
 	int getS() const { return m_S; }
-	int getIndex(pair<int, int> vertex) const { return vertex.first * (m_S + 1) + vertex.second; } // to get the index of the vertex in the vector
-	pair<int, int> getVertex(int index) const { return make_pair(index / (m_S + 1), index % (m_S + 1)); } // to get the vertex from the index
-
-	const list<pair<pair<int, int>, EdgeType>>& getAdjList(pair<int, int> vertex) const { return m_AdjList[getIndex(vertex)]; }
+	const list<pair<pair<int, int>, EdgeType>>& getAdjList(pair<int, int> vertex) const { return m_AdjList[Utils::getIndex(vertex, getS())]; }
 
 };
 

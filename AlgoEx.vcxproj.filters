@@ -18,33 +18,45 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DirGraph.cpp">
+    <ClCompile Include="DirGraphImp1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FirstAlgorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vertex.cpp">
+    <ClCompile Include="BFSIm1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BFS.cpp">
+    <ClCompile Include="DirGraphImp2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BFSImp2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DirGraph.h">
+    <ClInclude Include="DirGraphImp1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FirstAlgorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Vertex.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="EdgeType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BFS.h">
+    <ClInclude Include="BFSIm1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DirGraphImp2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BFSImp2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

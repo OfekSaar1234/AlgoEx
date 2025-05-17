@@ -1,12 +1,12 @@
-#include "DirGraph.h"
+#include "DirGraphImp1.h"
 
-void DirGraph::MakeEmptyGraph(int numOfVertices)
+void DirGraphImp1::MakeEmptyGraph(int numOfVertices)
 {
 	m_AdjList.resize(m_numVertices);
 	//addVerticesToGraph();
 }
 
-void DirGraph::FillGraphEdges()
+void DirGraphImp1::FillGraphEdges()
 {
 	addEdgeFillLargeJug();
 	addEdgeFillSmallJug();
@@ -18,7 +18,7 @@ void DirGraph::FillGraphEdges()
 	sortAdjList(); // sort the adjacency list neighbors Lexicographically for each vertex
 }
 
-void DirGraph::sortAdjList()
+void DirGraphImp1::sortAdjList()
 {
 	for (auto& adjList : m_AdjList)
 	{    //// (1,4)->(2,3) -> (3,2) -> (4,1)
@@ -40,27 +40,13 @@ void DirGraph::sortAdjList()
 	}
 }
 
-//void DirGraph::addVerticesToGraph()
-//{
-//	for (int i = 0; i < m_numVertices; i++)
-//	{
-//		m_AdjList.push_back(list<pair<pair<int, int>, EdgeType>>());
-//	}
-//}
-
-//void DirGraph::addVertexToGraph(pair<int, int> vertex)
-//{
-//	m_AdjList.push_back(list<pair<pair<int, int>, EdgeType>>());
-//}
-
-
-void DirGraph::addEdge(pair<int, int> from, pair<int, int> to, EdgeType edgeType) // to add the string of the type of edge
+void DirGraphImp1::addEdge(pair<int, int> from, pair<int, int> to, EdgeType edgeType) // to add the string of the type of edge
 {
-	m_AdjList[getIndex(from)].push_back(make_pair(to, edgeType)); // add the edge to the adj list of the vertex
+	m_AdjList[Utils::getIndex(from, getS())].push_back(make_pair(to, edgeType)); // add the edge to the adj list of the vertex
 }
 
 // Fill large jug (Red)
-void DirGraph::addEdgeFillLargeJug()
+void DirGraphImp1::addEdgeFillLargeJug()
 {
 	for (int largeCurrAmount = 0; largeCurrAmount < m_L; largeCurrAmount++)
 	{
@@ -72,7 +58,7 @@ void DirGraph::addEdgeFillLargeJug()
 }
 
 // Fill small jug (Green)
-void DirGraph::addEdgeFillSmallJug()
+void DirGraphImp1::addEdgeFillSmallJug()
 {
 	for (int largeCurrAmount = 0; largeCurrAmount <= m_L; largeCurrAmount++)
 	{
@@ -84,7 +70,7 @@ void DirGraph::addEdgeFillSmallJug()
 }
 
 // Empty large jug (Orange)
-void DirGraph::addEdgeEmptyLargeJug()
+void DirGraphImp1::addEdgeEmptyLargeJug()
 {
 	for (int largeCurrAmount = 1; largeCurrAmount <= m_L; largeCurrAmount++)
 	{
@@ -96,7 +82,7 @@ void DirGraph::addEdgeEmptyLargeJug()
 }
 
 // Empty small jug (LightBlue)
-void DirGraph::addEdgeEmptySmallJug()
+void DirGraphImp1::addEdgeEmptySmallJug()
 {
 	for (int largeCurrAmount = 0; largeCurrAmount <= m_L; largeCurrAmount++)
 	{
@@ -108,7 +94,7 @@ void DirGraph::addEdgeEmptySmallJug()
 }
 
 // Transfer from large jug to small jug (Purple)
-void DirGraph::addEdgePourLargeJugToSmallJug()
+void DirGraphImp1::addEdgePourLargeJugToSmallJug()
 {
 	for (int largeCurrAmount = 1; largeCurrAmount <= m_L; largeCurrAmount++) // rows
 	{
@@ -122,7 +108,7 @@ void DirGraph::addEdgePourLargeJugToSmallJug()
 }
 
 // Transfer from small jug to large jug (Blue)
-void DirGraph::addEdgePourSmallJugToLargeJug()
+void DirGraphImp1::addEdgePourSmallJugToLargeJug()
 {
 	for (int largeCurrAmount = 0; largeCurrAmount < m_L; largeCurrAmount++) // rows
 	{
